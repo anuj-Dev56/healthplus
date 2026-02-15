@@ -193,7 +193,7 @@ const AuthLayout = ({type = 'login'}) => {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className={"block w-full px-3 py-2 mt-2 rounded bg-gray-50 text-black"}
+                                className={"block w-full px-3 py-2 mt-2 rounded bg-gray-800 text-gray-100"}
                             />
                             {errors.email && <div style={{color: 'crimson', marginTop: 6}}>{errors.email}</div>}
                         </div>
@@ -205,7 +205,7 @@ const AuthLayout = ({type = 'login'}) => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className={"block w-full px-3 py-2 mt-2 rounded bg-gray-50 text-black"}
+                                className={"block w-full px-3 py-2 mt-2 rounded bg-gray-800 text-gray-100"}
                             />
                             {errors.password && <div style={{color: 'crimson', marginTop: 6}}>{errors.password}</div>}
                         </div>
@@ -218,20 +218,20 @@ const AuthLayout = ({type = 'login'}) => {
                                     type="password"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className={"block w-full px-3 py-2 mt-2 rounded bg-gray-50 text-black"}
+                                    className={"block w-full px-3 py-2 mt-2 rounded bg-gray-800 text-gray-100"}
                                 />
                                 {errors.confirmPassword &&
                                     <div style={{color: 'crimson', marginTop: 6}}>{errors.confirmPassword}</div>}
                             </div>
                         )}
 
-                        <button className={"bg-white text-black rounded-2xl w-full py-2" } type="submit">
+                        <button className={"bg-gray-700 text-gray-100 rounded-2xl w-full py-2" } type="submit">
                             {currentType === 'login' ? 'Login' : 'Create account'}
                         </button>
 
                         {/* Google login button */}
                         <button type="button" onClick={handleGoogleLogin}
-                                className={"w-full gap-2 mt-3 border  rounded-2xl flex items-center justify-center p-2"}>
+                                className={"w-full gap-2 mt-3 border rounded-2xl flex items-center justify-center p-2 bg-white/6 hover:bg-white/10 text-gray-100"}>
                             <FcGoogle className={""} size={24}/>
                             <span className={"ml-2"}>Continue with Google</span>
                         </button>
@@ -257,9 +257,9 @@ const AuthLayout = ({type = 'login'}) => {
             {/* If the signed-in user has no type, show a chooser panel */}
             {needsType && (
                 <div className={"fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4"}>
-                    <div className={"bg-white rounded-lg p-6 max-w-sm w-full text-center mx-4"}>
+                    <div className={"bg-gray-800 rounded-lg p-6 max-w-sm w-full text-center mx-4"}>
                         <h3 className={"font-bold mb-3"}>Select account type</h3>
-                        <p className={"mb-3 text-sm text-gray-700"}>We couldn't find your account type. Please choose one to continue.</p>
+                        <p className={"mb-3 text-sm text-gray-300"}>We couldn't find your account type. Please choose one to continue.</p>
 
                         <div className={"flex gap-3 justify-center mb-4"}>
                             <button onClick={() => chooseType('admin')} disabled={settingType}
@@ -267,12 +267,12 @@ const AuthLayout = ({type = 'login'}) => {
                                 {settingType ? 'Saving...' : 'Admin'}
                             </button>
                             <button onClick={() => chooseType('client')} disabled={settingType}
-                                    className={"px-4 py-2 rounded-md bg-gray-200 text-black"}>
+                                    className={"px-4 py-2 rounded-md bg-gray-700 text-gray-100"}>
                                 {settingType ? 'Saving...' : 'Client'}
                             </button>
                         </div>
 
-                        <div className={"text-sm text-gray-600"}>
+                        <div className={"text-sm text-gray-300"}>
                             You can change this later in your profile.
                         </div>
                     </div>

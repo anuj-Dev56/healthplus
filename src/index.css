@@ -1,10 +1,57 @@
 @import "tailwindcss";
 
+:root{
+    /* HealthPlus color palette (from provided image) */
+    --hp-900: #123849; /* very dark teal */
+    --hp-800: #184f66; /* darker blue-teal */
+    --hp-700: #3f6f86; /* muted blue */
+    --hp-500: #6f97ad; /* lighter blue */
+    --hp-beige: #d9c9bf; /* warm beige */
 
+    --hp-text: #f4f7f7; /* light text */
+    --hp-muted: #9aa7af; /* muted text */
+    --hp-border: rgba(255,255,255,0.06);
+}
+
+/* Base body styles using the new palette */
 body {
-    @apply bg-black text-gray-100 font-sans;
+    background: linear-gradient(180deg, var(--hp-900) 0%, var(--hp-800) 40%, var(--hp-700) 70%);
+    color: var(--hp-text);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
-input {
-    @apply border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+/* Inputs & common form controls */
+input, textarea, select {
+    background: rgba(255,255,255,0.02);
+    color: var(--hp-text);
+    border: 1px solid var(--hp-border);
 }
+
+/* Utility overrides to map common Tailwind utils to the new palette so existing components update automatically */
+.bg-gray-900 { background-color: var(--hp-900) !important; }
+.bg-gray-800 { background-color: var(--hp-800) !important; }
+.bg-gray-700 { background-color: var(--hp-700) !important; }
+.text-gray-100, .text-white { color: var(--hp-text) !important; }
+.text-gray-300, .text-gray-400, .text-gray-500, .text-gray-200 { color: var(--hp-muted) !important; }
+.bg-black { background-color: var(--hp-900) !important; }
+.bg-black\/50 { background-color: rgba(18,56,73,0.5) !important; }
+.border-gray-700, .border-gray-800, .border-gray-600 { border-color: var(--hp-border) !important; }
+.bg-blue-600, .bg-indigo-600 { background-color: var(--hp-700) !important; }
+.hover\:bg-indigo-500:hover { background-color: var(--hp-500) !important; }
+.bg-green-600 { background-color: #059669 !important; } /* keep green for success actions */
+.bg-yellow-600 { background-color: #d6a600 !important; }
+.bg-white, .bg-white\/6, .bg-white\/10 { background-color: rgba(255,255,255,0.04) !important; }
+.text-black { color: #0b0b0b !important; }
+
+/* Buttons and links to use palette when possible */
+.button-primary, .btn-primary { background-color: var(--hp-700); color: var(--hp-text); }
+
+/* Modal overlays */
+.backdrop-blur-sm { backdrop-filter: blur(6px); }
+
+/* Small tweaks to make borders and shadows subtle in dark scheme */
+.border { border-color: var(--hp-border) !important; }
+.shadow, .shadow-sm, .shadow-xl { box-shadow: 0 6px 18px rgba(0,0,0,0.6) !important; }
+
+/* Ensure inputs and buttons remain readable on top of the dark backgrounds */
+input::placeholder, textarea::placeholder { color: rgba(244,247,247,0.6); }

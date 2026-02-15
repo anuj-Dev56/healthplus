@@ -19,7 +19,7 @@ const Auth = ({type}) => {
                 await signOut(auth)
             }} className={"flex justify-center items-center h-screen"}>
                 <h1>You are already logged in</h1>
-                <button className={"bg-white text-black p-2 ml-2 rounded-2xl"}>
+                <button className={"bg-gray-700 text-gray-100 p-2 ml-2 rounded-2xl"}>
                     SiginOut
                 </button>
             </div>
