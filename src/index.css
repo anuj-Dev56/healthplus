@@ -1,57 +1,81 @@
 @import "tailwindcss";
 
 :root{
-    /* HealthPlus color palette (from provided image) */
-    --hp-900: #123849; /* very dark teal */
-    --hp-800: #184f66; /* darker blue-teal */
-    --hp-700: #3f6f86; /* muted blue */
-    --hp-500: #6f97ad; /* lighter blue */
-    --hp-beige: #d9c9bf; /* warm beige */
+    /* Health color palette (from provided image) */
+    --hp-900: #123849; /* very dark teal (used for text & primary actions) */
+    --hp-800: #184f66; /* darker blue-teal (accent) */
+    --hp-700: #3f6f86; /* muted blue (secondary accents) */
+    --hp-500: #6f97ad; /* lighter blue (highlights) */
+    --hp-beige: #d9c9bf; /* warm cream/beige (page background) */
 
-    --hp-text: #f4f7f7; /* light text */
+    --hp-text: #f4f7f7; /* legacy light text (kept for small components) */
     --hp-muted: #9aa7af; /* muted text */
-    --hp-border: rgba(255,255,255,0.06);
+    --hp-border: rgba(18,56,73,0.08);
 }
 
-/* Base body styles using the new palette */
+/* Default: use the cream/beige as the global page background and dark teal for primary text */
 body {
-    background: linear-gradient(180deg, var(--hp-900) 0%, var(--hp-800) 40%, var(--hp-700) 70%);
-    color: var(--hp-text);
+    background: var(--hp-beige);
+    color: var(--hp-900);
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
-/* Inputs & common form controls */
+/* Inputs & common form controls: light background on cream with dark text */
 input, textarea, select {
-    background: rgba(255,255,255,0.02);
-    color: var(--hp-text);
+    background: rgba(0,0,0,0.02);
+    color: var(--hp-900);
     border: 1px solid var(--hp-border);
 }
 
-/* Utility overrides to map common Tailwind utils to the new palette so existing components update automatically */
+/* Map common utility background classes to the new palette */
 .bg-gray-900 { background-color: var(--hp-900) !important; }
 .bg-gray-800 { background-color: var(--hp-800) !important; }
 .bg-gray-700 { background-color: var(--hp-700) !important; }
-.text-gray-100, .text-white { color: var(--hp-text) !important; }
+
+/* LIGHT SURFACES: whenever an element has a light background (page, white surfaces), ensure text is dark for visibility */
+body, .bg-white, .bg-white\/6, .bg-white\/10 {
+    /* Use dark teal text on light/cream/white surfaces */
+    color: var(--hp-900) !important;
+}
+/* Links & utility text inside light surfaces should be dark by default */
+body a, .bg-white a, .bg-white\/6 a, .bg-white\/10 a { color: var(--hp-900) !important; }
+/* If components used .text-white on a light surface, override it to dark to avoid invisible text */
+body .text-white, .bg-white .text-white, .bg-white\/6 .text-white, .bg-white\/10 .text-white { color: var(--hp-900) !important; }
+/* Ensure .text-gray-100 on light surfaces maps to muted dark for available utility usage */
+body .text-gray-100, .bg-white .text-gray-100 { color: var(--hp-muted) !important; }
+
+/* DARK SURFACES: ensure dark panels use cream text for readability */
+.bg-gray-900, .bg-gray-800, .bg-gray-700, .bg-black {
+    color: var(--hp-beige) !important;
+}
+.bg-gray-900 a, .bg-gray-800 a, .bg-gray-700 a, .bg-black a { color: var(--hp-beige) !important; }
+/* Override text utilities used inside dark surfaces */
+.bg-gray-900 .text-black, .bg-gray-800 .text-black, .bg-gray-700 .text-black, .bg-black .text-black { color: var(--hp-beige) !important; }
+.bg-gray-900 .text-white, .bg-gray-800 .text-white, .bg-gray-700 .text-white, .bg-black .text-white { color: var(--hp-beige) !important; }
+.bg-gray-900 .text-gray-100, .bg-gray-800 .text-gray-100, .bg-gray-700 .text-gray-100, .bg-black .text-gray-100 { color: var(--hp-beige) !important; }
+
+/* Restore sensible global defaults for text utilities (so they behave normally outside scoped surfaces) */
+.text-white { color: #ffffff !important; }
+.text-gray-100 { color: var(--hp-muted) !important; }
 .text-gray-300, .text-gray-400, .text-gray-500, .text-gray-200 { color: var(--hp-muted) !important; }
-.bg-black { background-color: var(--hp-900) !important; }
-.bg-black\/50 { background-color: rgba(18,56,73,0.5) !important; }
-.border-gray-700, .border-gray-800, .border-gray-600 { border-color: var(--hp-border) !important; }
-.bg-blue-600, .bg-indigo-600 { background-color: var(--hp-700) !important; }
-.hover\:bg-indigo-500:hover { background-color: var(--hp-500) !important; }
-.bg-green-600 { background-color: #059669 !important; } /* keep green for success actions */
+.text-black { color: var(--hp-900) !important; }
+
+/* Primary buttons and action colors: use dark teal as the primary button color on cream backgrounds */
+.bg-blue-600, .bg-indigo-600 { background-color: var(--hp-900) !important; }
+.hover\:bg-indigo-500:hover { background-color: var(--hp-800) !important; }
+.button-primary, .btn-primary { background-color: var(--hp-900); color: var(--hp-beige); }
+
+/* Keep green/yellow semantic action colors */
+.bg-green-600 { background-color: #059669 !important; }
 .bg-yellow-600 { background-color: #d6a600 !important; }
-.bg-white, .bg-white\/6, .bg-white\/10 { background-color: rgba(255,255,255,0.04) !important; }
-.text-black { color: #0b0b0b !important; }
 
-/* Buttons and links to use palette when possible */
-.button-primary, .btn-primary { background-color: var(--hp-700); color: var(--hp-text); }
+/* Subtle surfaces and controls on top of cream */
+.bg-white, .bg-white\/6, .bg-white\/10 { background-color: rgba(255,255,255,0.9) !important; }
 
-/* Modal overlays */
+/* Modal overlays and shadows */
 .backdrop-blur-sm { backdrop-filter: blur(6px); }
-
-/* Small tweaks to make borders and shadows subtle in dark scheme */
 .border { border-color: var(--hp-border) !important; }
-.shadow, .shadow-sm, .shadow-xl { box-shadow: 0 6px 18px rgba(0,0,0,0.6) !important; }
+.shadow, .shadow-sm, .shadow-xl { box-shadow: 0 6px 18px rgba(18,56,73,0.08) !important; }
 
-/* Ensure inputs and buttons remain readable on top of the dark backgrounds */
-input::placeholder, textarea::placeholder { color: rgba(244,247,247,0.6); }
+/* Ensure inputs and buttons remain readable on top of the light backgrounds */
+input::placeholder, textarea::placeholder { color: rgba(18,56,73,0.45); }

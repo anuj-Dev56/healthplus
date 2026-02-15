@@ -306,8 +306,8 @@ const Dashboard = () => {
                 </div>
 
                 {/* Right column: heatmap and actions */}
-                <aside className={"bg-gray-900 p-6 rounded shadow border border-gray-700 text-gray-100"}>
-                    <h3 className={"font-semibold mb-3 text-white"}>City-level heatmap</h3>
+                <aside className={"bg-gray-900 p-6 rounded shadow border border-gray-700 text-black"}>
+                        <h3 className={"font-semibold mb-3 text-white"}>City-level heatmap</h3>
                     <div className={"grid grid-cols-2 gap-3 mb-4"}>
                         {locationBuckets.length === 0 ? (
                             <div className={"text-sm text-gray-500 col-span-2"}>No location data yet.</div>
@@ -321,7 +321,7 @@ const Dashboard = () => {
                                  }}>
                                 <div className={"text-sm font-medium truncate w-full"} title={b.loc}>{b.loc}</div>
                                 <div className={"text-lg font-bold mt-1"}>{b.count}</div>
-                                <button onClick={() => cleanupLocation(b.loc)} disabled={cleaningLocation === b.loc} className={"mt-2 text-xs px-3 py-1 rounded bg-white/10 text-white border border-white/20"}>
+                                <button onClick={() => cleanupLocation(b.loc)} disabled={cleaningLocation === b.loc} className={"mt-2 text-xs px-3 py-1 rounded bg-white/10 text-black border border-white/20"}>
                                     {cleaningLocation === b.loc ? 'Cleaning...' : 'Mark cleaned'}
                                 </button>
                             </div>
