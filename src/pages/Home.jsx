@@ -43,8 +43,8 @@ const Home = () => {
 
             <main className={"max-w-4xl mx-auto px-4 py-12"}>
                 <section className={"mb-12 text-center"}>
-                    <h1 className={"text-3xl font-extrabold mb-4"}>Welcome to Health<PlusIcon /></h1>
-                    <p className={"text-gray-100 mb-6"}>Simple health management tools for clinics and patients. Track appointments, manage profiles, and stay connected.</p>
+                    <h1 className={"text-3xl font-extrabold mb-4"}>Welcome to CityHealth<PlusIcon /></h1>
+                    <p className={"text-gray-100 mb-6"}>Simple city management system</p>
                     <div className={"flex flex-col sm:flex-row items-center justify-center gap-3"}>
                         <a href="/auth/signin" className={"w-full sm:w-auto text-center px-4 py-2 bg-blue-600 text-white rounded"}>Create an account</a>
                         <a href="/auth/login" className={"w-full sm:w-auto text-center px-4 py-2 border rounded"}>Sign in</a>

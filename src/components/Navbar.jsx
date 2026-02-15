@@ -50,7 +50,10 @@ const Navbar = () => {
             setUser(null)
             setUserDocument(null)
             // reset to default public links
-            setLinks([{ label: 'Home', href: '/' }, { label: 'Reports', href: '/reports' }, { label: 'Contact', href: '/contact' }])
+            setLinks([{label: 'Home', href: '/'}, {label: 'Reports', href: '/reports'}, {
+                label: 'Contact',
+                href: '/contact'
+            }])
         } catch (e) {
             console.error('Sign out error', e)
         }
@@ -116,8 +119,10 @@ const Navbar = () => {
 
                             <a href="/" className="flex items-center gap-3 text-white">
                                 <span className="font-semibold flex items-center gap-1">
-                                    Health
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 text-red-500 ml-1" aria-hidden="true"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
+                                    CityHealth
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                         className="w-3 h-3 text-red-500 ml-1" aria-hidden="true"><path
+                                        d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
                                 </span>
                             </a>
                         </div>
@@ -172,7 +177,10 @@ const Navbar = () => {
                     <div className="flex items-center justify-between px-4 py-4 border-b border-gray-800">
                         <div className="flex items-center gap-3">
                             <div className="font-semibold flex items-center gap-1">Health
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 text-red-500 ml-1" aria-hidden="true"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                     className="w-3 h-3 text-red-500 ml-1" aria-hidden="true">
+                                    <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/>
+                                </svg>
                             </div>
                         </div>
                         <button

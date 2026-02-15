@@ -16,7 +16,6 @@
 /* Default: use the cream/beige as the global page background and dark teal for primary text */
 body {
     background: var(--hp-beige);
-    color: var(--hp-900);
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
